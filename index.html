@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GAO卓球場｜成瀬駅徒歩3分・24時間営業</title>
+<meta name="description" content="JR横浜線 成瀬駅徒歩3分。初心者から競技者まで楽しめるGAO卓球場。台貸し・個人レッスンをオンライン予約。">
+<style>
+:root{
+  --bg:#0d0f12; --panel:#15181d; --soft:#20252c; --text:#f6f7f8; --muted:#aeb6c0;
+  --accent:#f1d45d; --accent2:#ffffff; --ok:#b9efae; --danger:#ffb1b1;
+  --max:1120px; --radius:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+nav{position:sticky;top:0;z-index:30;background:rgba(13,15,18,.88);backdrop-filter:blur(14px);border-bottom:1px solid #2a2e34}
+.navin{height:70px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;letter-spacing:.08em;font-size:20px}
+.logo small{font-weight:600;color:var(--muted);font-size:11px;display:block;letter-spacing:.16em}
+.navlinks{display:flex;gap:22px;align-items:center;color:#d9dee5;font-size:14px}
+.btn{border:0;border-radius:999px;padding:13px 20px;background:var(--accent);color:#151515;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.secondary{background:#fff;color:#111}
+.btn.ghost{background:transparent;color:#fff;border:1px solid #3a414a}
+.hero{min-height:660px;display:grid;align-items:center;background:
+radial-gradient(circle at 75% 20%,rgba(241,212,93,.16),transparent 32%),
+linear-gradient(120deg,#0d0f12 55%,#15191f 55%)}
+.hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;padding:78px 0}
+.kicker{color:var(--accent);font-weight:800;letter-spacing:.14em;font-size:13px}
+h1{font-size:clamp(44px,7vw,84px);line-height:.98;margin:14px 0 24px;letter-spacing:-.045em}
+.hero p{font-size:18px;color:#c8cfd7;max-width:650px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-card{border:1px solid #303640;background:linear-gradient(180deg,#171b20,#101215);border-radius:32px;padding:28px;box-shadow:0 30px 80px rgba(0,0,0,.36)}
+.hero-card .ball{height:210px;border-radius:24px;background:
+radial-gradient(circle at 50% 50%,#fafafa 0 9%,#ececec 9.5% 11%,transparent 11.5%),
+radial-gradient(circle at 50% 50%,rgba(241,212,93,.18) 0 34%,transparent 34.5%),
+linear-gradient(140deg,#242b34,#11151a);display:grid;place-items:end start;padding:20px}
+.badges{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.badge{background:#20252c;border-radius:15px;padding:13px;text-align:center}
+.badge b{display:block;font-size:18px}
+.badge span{font-size:11px;color:var(--muted)}
+section{padding:86px 0}
+.section-head{display:flex;justify-content:space-between;gap:26px;align-items:end;margin-bottom:32px}
+.section-head h2{font-size:36px;line-height:1.15;margin:0}
+.section-head p{color:var(--muted);max-width:520px;margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid #262c33;border-radius:var(--radius);padding:26px}
+.card .icon{font-size:34px}
+.card h3{margin:12px 0 8px;font-size:21px}
+.card p{color:var(--muted);margin:0}
+.price{font-size:30px;font-weight:900;margin-top:22px}
+.notice{margin-top:18px;padding:16px 18px;border-radius:16px;background:#1b2026;border-left:4px solid var(--accent);color:#d7dde4}
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.feature-box{min-height:320px;border-radius:28px;padding:34px;background:#171a1f;border:1px solid #2a3038;display:flex;flex-direction:column;justify-content:flex-end}
+.feature-box strong{font-size:30px}
+.feature-box p{color:var(--muted);max-width:520px}
+.booking-demo{background:#fff;color:#131313;border-radius:30px;padding:28px}
+.booking-demo h3{font-size:28px;margin:0 0 6px}
+.booking-demo .sub{color:#636b75;margin-bottom:20px}
+.stepper{display:flex;gap:8px;margin-bottom:22px}
+.step{height:7px;flex:1;background:#e7e9ec;border-radius:99px}
+.step.on{background:#171717}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{border:1px solid #d9dde2;border-radius:16px;padding:16px;cursor:pointer;background:#fff}
+.choice.active{border:2px solid #111;background:#f4f4f4}
+label{font-weight:700;font-size:13px;display:block;margin:14px 0 6px}
+input,select,textarea{width:100%;border:1px solid #cfd4da;border-radius:12px;padding:13px;background:#fff;color:#111}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.slot{border:1px solid #d9dde2;background:#fff;border-radius:12px;padding:11px;text-align:center;cursor:pointer}
+.slot small{display:block;color:#65707c}
+.slot.full{background:#f3f4f5;color:#9aa1a9;cursor:not-allowed}
+.slot.selected{background:#141414;color:#fff;border-color:#141414}
+.booking-actions{display:flex;gap:10px;margin-top:20px}
+.booking-actions .btn{flex:1}
+.mini{font-size:12px;color:#747c85;margin-top:10px}
+.location{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+.address{background:#171a1f;border:1px solid #293039;border-radius:26px;padding:30px}
+.mapfake{border-radius:26px;min-height:320px;background:
+linear-gradient(135deg,rgba(241,212,93,.12),transparent 50%),
+repeating-linear-gradient(0deg,#1a1e23,#1a1e23 22px,#1c2127 23px,#1c2127 24px),
+repeating-linear-gradient(90deg,transparent,transparent 30px,rgba(255,255,255,.025) 31px,rgba(255,255,255,.025) 32px);
+display:grid;place-items:center;border:1px solid #293039}
+footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:13px}
+.mobile-book{display:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:60;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.show{display:flex}
+.modalbox{width:min(720px,100%);max-height:92vh;overflow:auto}
+.close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px;cursor:pointer}
+.status{margin-top:14px;border-radius:12px;padding:12px;display:none}
+.status.ok{display:block;background:#e8f8e4}
+.status.err{display:block;background:#ffe9e9}
+@media(max-width:820px){
+ .navlinks a:not(.btn){display:none}
+ .hero-grid,.feature,.location{grid-template-columns:1fr}
+ .hero{min-height:auto}
+ .hero-grid{padding:48px 0}
+ .hero-card{order:-1}
+ .cards{grid-template-columns:1fr}
+ .section-head{display:block}
+ .section-head p{margin-top:12px}
+ .slots{grid-template-columns:repeat(2,1fr)}
+ .mobile-book{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:50}
+ footer{padding-bottom:110px}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="wrap navin">
+    <div class="logo">GAO卓球場<small>GAO TABLE TENNIS</small></div>
+    <div class="navlinks">
+      <a href="#about">GAOの特徴</a><a href="lessons.html">レッスン</a><a href="coaches.html">コーチ紹介</a><a href="achievements.html">生徒の成長</a><a href="#trial">体験</a><a href="#access">アクセス</a>
+      <a class="btn" href="#" data-open-booking>予約する</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <div style="font-size:clamp(18px,2.6vw,30px);font-weight:900;letter-spacing:.02em;color:#f1d45d;margin-bottom:16px">
+     卓球スクール <span style="color:#fff">×</span> 練習コミュニティ
+   </div>
+   <h1 id="heroCatch">「卓球が上手くなる<br>コミュニティ」</h1>
+   <p style="font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">学ぶ場所も、練習する仲間も、ここにある。</p>
+   <p id="heroSub">レッスンで学び、仲間と試し、切磋琢磨し、またレッスンでさらに上達する。GAOは「教わって終わり」ではなく、学びと練習が循環する卓球場です。</p>
+   <div class="hero-actions">
+     <a class="btn line-link" href="#" data-line-purpose="trial">体験レッスンを予約</a>
+     <a class="btn ghost line-link" href="#" data-line-purpose="table">台貸しをLINEで予約</a>
+     <a class="btn ghost" href="#service">サービスを見る</a>
+   </div>
+  </div>
+  <div class="hero-card">
+    <div class="ball"><div><div class="kicker">GAO TABLE TENNIS</div><b style="font-size:26px">卓球台4台・24時間営業</b></div></div>
+    <div class="badges">
+      <div class="badge"><b>3分</b><span>成瀬駅から徒歩</span></div>
+      <div class="badge"><b>4台</b><span>卓球台</span></div>
+      <div class="badge"><b>3言語</b><span>日・中・英対応</span></div>
+    </div>
+  </div>
+ </div>
+</header>
+
+<main>
+<section id="service">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">サービス</div><h2>学び方も、楽しみ方も、いろいろ。</h2></div>
+   <p>個人レッスン、グループレッスン、月謝制ジュニア・初心者教室など、目的や年代に合わせた多様なレッスンをご用意しています。詳しくは下のレッスン案内をご覧ください。</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">🎓</div>
+      <h3>豊富なレッスン</h3>
+      <p>個人レッスン、グループレッスン、月謝制ジュニア・初心者教室など、目的や年代に合わせて選べます。</p>
+      <div class="price">LESSON</div>
+      <a class="btn" style="margin-top:18px" href="lessons.html">レッスンを見る</a>
+    </div>
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>招待制メンバーシップ</h3>
+      <p>会員同士で練習し、さまざまな戦型・プレースタイルの仲間と切磋琢磨できるコミュニティです。</p>
+      <div class="price">招待制</div>
+      <a class="btn ghost line-link" style="margin-top:18px" href="#">興味があります</a>
+    </div>
+    <div class="card">
+      <div class="icon">🏓</div>
+      <h3>卓球用品・用具サポート</h3>
+      <p>ラバー・ラケットの販売に加え、ラバー貼り、ラバー交換、用具相談にも対応します。</p>
+      <div class="price">SHOP & SUPPORT</div>
+      <a class="btn ghost" style="margin-top:18px" href="shop.html">卓球用品を見る</a>
+    </div>
+  
+    <div class="card">
+      <div class="icon">🏓</div>
+      <h3>台貸し</h3>
+      <p>友人との練習や自主練習に。ご予約はLINE公式アカウントから受け付けています。</p>
+      <div class="price">台貸し</div>
+      <a class="btn ghost line-link" style="margin-top:18px" href="#" data-line-purpose="table">LINEで予約する</a>
+    </div>
+</div>
+  
+ </div>
+</section>
+
+<section id="classes">
+ <div class="wrap">
+  <div class="section-head">
+    <div><div class="kicker">レッスン</div><h2>一人でも、仲間とでも。子どもから大人まで。</h2></div>
+    <p>目的や年代に合わせた学び方を用意しています。詳しい開催日程や募集状況はLINEからお問い合わせください。</p>
+  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="icon">👥</div>
+      <h3>グループレッスン</h3>
+      <p>仲間と一緒に学びながら、基本技術から実戦的な内容まで取り組みます。</p>
+      <div class="price">月額 8,000円</div>
+      <div style="color:#aeb6c0">月2回</div>
+      <a class="btn line-link" style="margin-top:18px" href="#">LINEで問い合わせ</a>
+    </div>
+    <div class="card">
+      <div class="icon">🌱</div>
+      <h3>ジュニア・初心者教室</h3>
+      <p>ジュニアや卓球をこれから始めたい初心者の方を対象に、楽しみながら基礎・身体の使い方・フットワーク・試合につながる技術を身につけます。</p>
+      <div class="price">ジュニア</div>
+      <div style="color:#aeb6c0">月謝制 10,000円</div>
+      <a class="btn line-link" style="margin-top:18px" href="#">LINEで問い合わせ</a>
+    </div>
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>個人レッスン・体験</h3>
+      <p>自分の課題に集中したい方へ。初めての方には45分の体験レッスンもご用意しています。</p>
+      <div class="price">1対1</div>
+      <a class="btn" style="margin-top:18px" href="#trial">体験レッスンを見る</a>
+    </div>
+  </div>
+  <div style="margin-top:22px"><a class="btn ghost" href="lessons.html">レッスンを詳しく見る</a></div>
+ </div>
+</section>
+
+
+<section id="about">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">卓球スクール × 練習コミュニティ</div><h2>学びと練習が、自然につながる。</h2></div>
+   <p>レッスンで学び、仲間と練習し、切磋琢磨する。そしてまたレッスンで次の課題へ。GAOは学びと練習が循環する環境を大切にしています。</p>
+  </div>
+  <div class="feature" id="strengthGrid"></div>
+  <div class="notice" style="margin-top:24px">
+    <b>GAOが向いている方：</b>
+    楽しく長く卓球を続けたい／もっと上達したい／いろいろな戦型の相手と打ちたい／練習相手探しに時間を使いたくない／温かいチームの中で卓球を楽しみたい／日本語・中国語・英語でレッスンを受けたい
+  </div>
+  <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap">
+    <a class="btn" href="coaches.html">コーチを見る</a>
+    <a class="btn ghost line-link" href="#" data-line-purpose="member">会員制度に興味があります</a>
+  </div>
+ </div>
+</section>
+
+
+
+<section id="coaches">
+ <div class="wrap">
+  <div class="section-head">
+    <div><div class="kicker">コーチ紹介</div><h2>技術だけでなく、続け方まで一緒に。</h2></div>
+    <p>経験も視点も異なるコーチ陣が、目的やレベルに合わせてサポートします。</p>
+  </div>
+  <div class="cards" id="coachTeaser"></div>
+  <div style="margin-top:22px"><a class="btn" href="coaches.html">3人のコーチを詳しく見る</a></div>
+ </div>
+</section>
+
+<section id="trial">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">体験レッスン</div><h2>まずは45分、GAOを体験。</h2></div>
+   <p>卓球のお悩みや目標を伺ってから、実際に1対1で打ちながらレッスンします。</p>
+  </div>
+  <div class="feature">
+   <div class="feature-box">
+    <div class="kicker">45分</div>
+    <strong>15分相談 + 30分 1対1レッスン</strong>
+    <p>最初の15分は、現在のお悩み・目標・プレースタイルなどを対面でご相談。その後30分、実際に打ちながら個別にアドバイスします。</p>
+   </div>
+   <div class="feature-box">
+    <div class="kicker">体験料金</div>
+    <strong id="trialPrice">4,000円</strong>
+    <p>GAO卓球場のInstagramアカウントをフォローしていただいた方は、体験料金から1,000円引き。<br><b style="color:#fff">フォロー後：<span id="trialDiscountPrice">3,000円</span></b></p>
+    <div style="margin-top:18px"><a class="btn line-link" href="#" data-line-purpose="trial">LINEで体験レッスンを予約</a></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+
+
+
+
+<section id="student-growth">
+ <div class="wrap">
+  <div class="section-head">
+    <div><div class="kicker">生徒の成長</div><h2>結果だけでなく、成長の過程も残していく。</h2></div>
+    <p>大会での好成績、初勝利、苦手技術の克服など、GAOで生まれた一人ひとりの成長を紹介します。</p>
+  </div>
+  <div id="achievementTeaser" class="cards"></div>
+  <div style="margin-top:22px"><a class="btn" href="achievements.html">生徒の成長・大会結果を見る</a></div>
+ </div>
+</section>
+
+<section id="shop">
+ <div class="wrap">
+  <div class="section-head">
+   <div><div class="kicker">卓球用品</div><h2>ラバー・ラケットも、GAOで。</h2></div>
+   <p>卓球を知っているコーチと相談しながら、自分のプレースタイルに合う用具を選べるショップページを追加しました。</p>
+  </div>
+  <div class="cards">
+   <div class="card"><div class="icon">🟥</div><h3>ラバー</h3><p>裏ソフト・表ソフト・粒高など。おすすめ商品や在庫を掲載できる形にしています。</p></div>
+   <div class="card"><div class="icon">🏓</div><h3>ラケット</h3><p>シェーク・ペンを中心に、レベルや戦型に合わせて相談しながら選べます。</p></div>
+   <div class="card"><div class="icon">💬</div><h3>用具相談</h3><p>「何を買えばいいか分からない」という方も、コーチに相談してから購入できます。</p></div>
+  </div>
+  <div style="margin-top:22px"><a class="btn" href="shop.html">GAO 卓球用品を見る</a></div>
+ </div>
+</section>
+
+
+<section id="social">
+ <div class="wrap">
+  <div class="section-head">
+    <div><div class="kicker">お問い合わせ・SNS</div><h2>LINEとInstagramでつながる。</h2></div>
+    <p>体験レッスン、会員制度、グループレッスン、ジュニア・初心者教室についてはLINE公式アカウントからお気軽にお問い合わせください。</p>
+  </div>
+  <div class="grid2">
+    <div class="card" style="text-align:center">
+      <h3>LINE公式アカウント</h3>
+      <img src="assets/line-qr.png" alt="GAO卓球場 LINE公式アカウント QRコード" style="width:min(220px,75%);background:#fff;padding:8px;border-radius:16px">
+      <div style="font-size:22px;font-weight:900;margin:14px 0">@793uydwv</div>
+      <a class="btn line-link" href="#">LINEで問い合わせ</a>
+    </div>
+    <div class="card" style="text-align:center">
+      <h3>Instagram</h3>
+      <img src="assets/instagram-qr.png" alt="GAO卓球場 Instagram QRコード" style="width:min(220px,75%);background:#fff;padding:8px;border-radius:16px">
+      <div style="font-size:22px;font-weight:900;margin:14px 0">@gaopingpang</div>
+      <a class="btn ghost" target="_blank" rel="noopener" href="https://www.instagram.com/gaopingpang/">Instagramを見る</a>
+    </div>
+  </div>
+ </div>
+</section>
+
+<section id="access">
+ <div class="wrap">
+  <div class="section-head"><div><div class="kicker">アクセス</div><h2>成瀬駅から徒歩3分。</h2></div></div>
+  <div class="location">
+   <div class="address">
+    <h3 style="font-size:28px;margin-top:0">GAO卓球場</h3>
+    <p>〒194-0045<br>東京都町田市南成瀬1丁目8-12<br>中山ビル 3階 301</p>
+    <p><b>TEL</b><br>070-2178-6868</p>
+    <p style="color:#aeb6c0">年中無休 · 24H<br>当日台貸し予約：9:30〜19:00<br>21:00以降：前日までに予約</p>
+    <a class="btn secondary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=東京都町田市南成瀬1丁目8-12">Google Mapsで見る</a>
+   </div>
+   <div class="mapfake"><div style="text-align:center"><div style="font-size:54px">📍</div><b>成瀬駅 徒歩3分</b><br><span style="color:#aeb6c0">町田・相模大野方面からもアクセスしやすい立地</span></div></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap">© GAO TABLE TENNIS · 試作版 v3</div></footer>
+
+
+<script src="content.js"></script>
+<script>
+const API_URL = ""; // 本番時にGoogle Apps Script WebアプリURLを入れる
+const MAX_TABLES = 1;
+const OPEN_HOUR = 10;
+const CLOSE_HOUR = 17;
+
+function pad(n){return String(n).padStart(2,"0")}
+function localDateStr(d){return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`}
+function tomorrowOrLater(dateStr){
+ const now=new Date(); const d=new Date(dateStr+"T00:00:00");
+ const t=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1);
+ return d>=t;
+}
+function seededCount(dateStr,hour){
+ // 画面確認用のサンプル。本番はAPIから取得
+ const key=(new Date(dateStr+"T00:00:00").getDate()+hour)%5;
+ return [0,0,1,0,1][key];
+}
+async function getCount(dateStr,hour){
+ if(!API_URL) return seededCount(dateStr,hour);
+ const u=`${API_URL}?action=availability&date=${encodeURIComponent(dateStr)}&hour=${hour}`;
+ const r=await fetch(u); const j=await r.json(); return Number(j.count||0);
+}
+
+function bookingUI(root, preset="table"){
+ root.innerHTML = `
+ <h3>オンライン予約</h3>
+ <div class="sub">ご希望の日付と空いている時間をお選びください。</div>
+ <div class="stepper"><div class="step on"></div><div class="step"></div><div class="step"></div></div>
+ <div class="grid2">
+  <div class="choice ${preset==="table"?"active":""}" data-kind="table"><b>🏓 台貸し</b><br><small>空き時間を確認</small></div>
+  <div class="choice ${preset==="lesson"?"active":""}" data-kind="lesson"><b>🎯 個人レッスン</b><br><small>教練予約へ拡張可能</small></div>
+ </div>
+ <label>日付</label>
+ <input type="date" class="date">
+ <label>時間</label>
+ <div class="slots"></div>
+ <div class="form2" style="display:none">
+  <label>お名前</label><input class="name" placeholder="例：田中 太郎">
+  <label>メールアドレス</label><input class="email" type="email" placeholder="example@email.com">
+  <div class="grid2">
+   <div><label>区分</label><select class="member"><option>会員</option><option>ビジター</option></select></div>
+   <div><label>人数</label><select class="people"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+  </div>
+  <label>備考</label><textarea class="note" rows="2" placeholder="ご要望があれば入力してください"></textarea>
+ </div>
+ <div class="status"></div>
+ <div class="booking-actions"><button class="btn next">時間を選ぶ</button></div>
+ <div class="mini">※ 表示されている時間からお選びください。※ この試作版は本番データをまだ送信しません。</div>`;
+
+ const state={kind:preset,date:"",hour:null};
+ const dateEl=root.querySelector(".date"), slots=root.querySelector(".slots"), next=root.querySelector(".next");
+ const today=new Date(); dateEl.min=localDateStr(today); dateEl.value=localDateStr(today); state.date=dateEl.value;
+
+ root.querySelectorAll(".choice").forEach(c=>c.onclick=()=>{
+   root.querySelectorAll(".choice").forEach(x=>x.classList.remove("active"));
+   c.classList.add("active"); state.kind=c.dataset.kind;
+ });
+
+ async function renderSlots(){
+  slots.innerHTML="空き状況を確認中…";
+  const items=[];
+  for(let h=OPEN_HOUR;h<CLOSE_HOUR;h++){
+    const count=await getCount(state.date,h);
+    const remain=Math.max(0,MAX_TABLES-count);
+    items.push(`<button class="slot ${remain===0?"full":""}" ${remain===0?"disabled":""} data-hour="${h}">
+      ${pad(h)}:00<small>${remain===0?"満席":`空き ${remain}台`}</small></button>`);
+  }
+  slots.innerHTML=items.join("");
+  slots.querySelectorAll(".slot:not(.full)").forEach(s=>s.onclick=()=>{
+    slots.querySelectorAll(".slot").forEach(x=>x.classList.remove("selected"));
+    s.classList.add("selected"); state.hour=Number(s.dataset.hour);
+    next.textContent="予約者情報へ";
+  });
+ }
+ dateEl.onchange=()=>{state.date=dateEl.value;state.hour=null;renderSlots()};
+ renderSlots();
+
+ next.onclick=async()=>{
+  const status=root.querySelector(".status");
+  if(!state.hour){status.className="status err";status.textContent="時間を選択してください。";return}
+  const form=root.querySelector(".form2");
+  if(form.style.display==="none"){
+    form.style.display="block"; root.querySelectorAll(".step")[1].classList.add("on");
+    next.textContent="予約を確定する"; status.className="status"; return;
+  }
+  const payload={
+    action:"book",kind:state.kind,date:state.date,hour:state.hour,
+    name:root.querySelector(".name").value.trim(),email:root.querySelector(".email").value.trim(),
+    member:root.querySelector(".member").value,people:root.querySelector(".people").value,
+    note:root.querySelector(".note").value.trim()
+  };
+  if(!payload.name || !payload.email){status.className="status err";status.textContent="お名前とメールアドレスを入力してください。";return}
+  if(!API_URL){
+    const arr=JSON.parse(localStorage.getItem("gao-demo-bookings")||"[]"); arr.push(payload);
+    localStorage.setItem("gao-demo-bookings",JSON.stringify(arr));
+    status.className="status ok";status.textContent=`デモ予約完了：${payload.date} ${pad(payload.hour)}:00（本番送信はまだしていません）`;
+    root.querySelectorAll(".step").forEach(x=>x.classList.add("on")); next.disabled=true; return;
+  }
+  try{
+    const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+    const j=await r.json();
+    if(!j.ok) throw new Error(j.message||"予約できませんでした");
+    status.className="status ok";status.textContent="予約が確定しました。確認メールをご確認ください。";
+    next.disabled=true;
+  }catch(e){status.className="status err";status.textContent=e.message}
+ };
+}
+
+
+// GAO LINE公式アカウント
+const LINE_OFFICIAL_URL = (window.GAO_CONTENT || GAO_CONTENT).SNS.LINEリンク;
+
+function openLineOfficial(){
+  window.open(LINE_OFFICIAL_URL, "_blank", "noopener");
+}
+
+document.querySelectorAll(".line-link").forEach(el=>{
+  el.addEventListener("click", e=>{
+    e.preventDefault();
+    openLineOfficial();
+  });
+});
+
+function renderContent(){
+  const c = GAO_CONTENT;
+
+  // Strengths
+  const grid = document.getElementById("strengthGrid");
+  if(grid){
+    grid.innerHTML = c.強み.map((x,i)=>`
+      <div class="feature-box">
+        <div class="kicker">${String(i+1).padStart(2,"0")}</div>
+        <strong>${x.見出し}</strong>
+        <p>${x.説明}</p>
+      </div>`).join("");
+  }
+
+  // Coach teaser
+  const coachGrid = document.getElementById("coachTeaser");
+  if(coachGrid){
+    coachGrid.innerHTML = c.コーチ.map(x=>`
+      <div class="card">
+        <div class="icon">🏓</div>
+        <div class="kicker">${x.役割}</div>
+        <h3>${x.日本語名}</h3>
+        <p>${x.一言}</p>
+      </div>`).join("");
+  }
+
+  const tp = document.getElementById("trialPrice");
+  if(tp) tp.textContent = yen(c.体験レッスン.料金);
+  const tdp = document.getElementById("trialDiscountPrice");
+  if(tdp) tdp.textContent = yen(c.体験レッスン.割引後料金);
+
+  // Student achievements teaser
+  const aroot = document.getElementById("achievementTeaser");
+  if(aroot){
+    const items = c.生徒の成長記録 || [];
+    if(items.length === 0){
+      aroot.innerHTML = `
+        <div class="card" style="grid-column:1/-1">
+          <div class="icon">🏆</div>
+          <h3>これからの成長を、ここに。</h3>
+          <p>大会での入賞、初勝利、技術の上達など、生徒のみなさんの嬉しいニュースを随時掲載していきます。</p>
+        </div>`;
+    } else {
+      aroot.innerHTML = items.slice(0,3).map(x=>`
+        <div class="card">
+          <div class="kicker">${x.タグ || "生徒の成長"}</div>
+          <h3>${x.タイトル}</h3>
+          <p>${x.内容}</p>
+          <div style="margin-top:14px;color:#aeb6c0">${x.日付 || ""} ${x.生徒名 ? "・"+x.生徒名 : ""}</div>
+        </div>`).join("");
+    }
+  }
+}
+
+renderContent();
+
+</script>
+</body>
+</html>

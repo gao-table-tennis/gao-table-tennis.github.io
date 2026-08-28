@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>生徒の成長・大会結果｜GAO卓球場</title>
+<style>
+:root{--bg:#0d0f12;--panel:#15181d;--text:#f6f7f8;--muted:#aeb6c0;--accent:#f1d45d;--max:1120px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.7}
+a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 36px));margin:auto}
+nav{position:sticky;top:0;background:rgba(13,15,18,.92);border-bottom:1px solid #2a2e34;z-index:10}.navin{height:70px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900}.btn{border-radius:999px;padding:13px 20px;background:var(--accent);color:#151515;font-weight:800;display:inline-flex}
+.hero{padding:85px 0 55px}.kicker{color:var(--accent);font-weight:800;font-size:13px;letter-spacing:.1em}
+h1{font-size:clamp(42px,7vw,72px);line-height:1.05;margin:12px 0 16px}.hero p{font-size:18px;color:#c8d0d8;max-width:760px}
+section{padding:35px 0 80px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid #293039;border-radius:24px;padding:26px}.card h2{font-size:24px;margin:8px 0}.muted{color:var(--muted)}
+.empty{grid-column:1/-1;padding:48px;text-align:center}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body>
+<script src="content.js"></script>
+<nav><div class="wrap navin"><a class="logo" href="index.html">GAO卓球場</a><a class="btn" href="index.html">公式サイトへ戻る</a></div></nav>
+<header class="hero"><div class="wrap"><div class="kicker">生徒の成長</div><h1>小さな進歩も、<br>大きな一歩も。</h1><p>大会結果だけではなく、「初めて勝てた」「苦手だった技術が使えた」など、一人ひとりの成長を記録していきます。</p></div></header>
+<section><div class="wrap"><div class="grid" id="results"></div></div></section>
+<script>
+const root=document.getElementById("results"), items=GAO_CONTENT.生徒の成長記録||[];
+if(!items.length){
+ root.innerHTML=`<div class="card empty"><div style="font-size:52px">🏆</div><h2>これからの成長を、ここに。</h2><p class="muted">生徒のみなさんの大会結果や嬉しい成長を随時掲載します。</p></div>`;
+}else{
+ root.innerHTML=items.map(x=>`<article class="card"><div class="kicker">${x.タグ||"生徒の成長"}</div><h2>${x.タイトル}</h2><p>${x.内容}</p><div class="muted">${x.日付||""}${x.生徒名?" ・ "+x.生徒名:""}</div></article>`).join("");
+}
+</script>
+</body></html>
