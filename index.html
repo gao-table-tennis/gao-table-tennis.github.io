@@ -122,11 +122,11 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
  <div class="wrap hero-grid">
   <div>
    <div style="font-size:clamp(18px,2.6vw,30px);font-weight:900;letter-spacing:.02em;color:#f1d45d;margin-bottom:16px">
-     卓球スクール <span style="color:#fff">×</span> 練習コミュニティ
+     <span id="brandTop">卓球スクール × 練習コミュニティ</span>
    </div>
    <h1 id="heroCatch">「卓球が上手くなる<br>コミュニティ」</h1>
-   <p style="font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">学ぶ場所も、練習する仲間も、ここにある。</p>
-   <p id="heroSub">レッスンで学び、仲間と練習し、互いに高め合う。そして、また次のステップへ。GAOは「教わって終わり」ではなく、学びと練習を重ねながら上達していける卓球場です。</p>
+   <p id="heroSubhead" style="font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">学ぶ場所も、練習する仲間も、ここにある。</p>
+   <p id="heroSub"></p>
    <div class="hero-actions">
      <a class="btn line-link" href="#" data-line-purpose="trial">体験レッスンを予約</a>
      <a class="btn ghost line-link" href="#" data-line-purpose="table">台貸しをLINEで予約</a>
@@ -148,8 +148,8 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
 <section id="service">
  <div class="wrap">
   <div class="section-head">
-   <div><div class="kicker">サービス</div><h2>学び方も、楽しみ方も、いろいろ。</h2></div>
-   <p>個人レッスン、グループレッスン、月謝制ジュニア・初心者教室など、目的や年代に合わせた多様なレッスンをご用意しています。詳しくは下のレッスン案内をご覧ください。</p>
+   <div><div class="kicker">サービス</div><h2 id="serviceHeading">学び方も、楽しみ方も、いろいろ。</h2></div>
+   <p id="serviceCopy">個人レッスン、グループレッスン、月謝制ジュニア・初心者教室など、目的や年代に合わせた多様なレッスンをご用意しています。詳しくは下のレッスン案内をご覧ください。</p>
   </div>
   <div class="cards">
     <div class="card">
@@ -162,7 +162,7 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
     <div class="card">
       <div class="icon">👥</div>
       <h3>招待制メンバーシップ</h3>
-      <p>会員同士で練習し、さまざまな戦型・ラバー・ラケットタイプの仲間と切磋琢磨できるコミュニティです。</p>
+      <p>会員同士で練習し、さまざまな戦型・プレースタイルの仲間と切磋琢磨できるコミュニティです。</p>
       <div class="price">招待制</div>
       <a class="btn ghost line-link" style="margin-top:18px" href="#">興味があります</a>
     </div>
@@ -226,7 +226,7 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
  <div class="wrap">
   <div class="section-head">
    <div><div class="kicker">卓球スクール × 練習コミュニティ</div><h2>学びと練習が、自然につながる。</h2></div>
-   <p>レッスンで学び、仲間と練習し、互いに高め合う。そして、また次のステップへ。GAOは学びと練習をきちんと重ねながら上達していける環境を大切にしています。</p>
+   <p>レッスンで学び、仲間と練習し、切磋琢磨する。そしてまたレッスンで次の課題へ。GAOは学びと練習が循環する環境を大切にしています。</p>
   </div>
   <div class="feature" id="strengthGrid"></div>
   <div class="notice" style="margin-top:24px">
@@ -476,6 +476,30 @@ document.querySelectorAll(".line-link").forEach(el=>{
 
 function renderContent(){
   const c = GAO_CONTENT;
+
+  // Editable homepage copy from content.js
+  const hp = c.首页文案 || {};
+  const brandTop = document.getElementById("brandTop");
+  if(brandTop) brandTop.textContent = hp.ブランド上段 || "卓球スクール × 練習コミュニティ";
+
+  const hc = document.getElementById("heroCatch");
+  if(hc){
+    const msg = hp.ブランド主張 || "「卓球が上手くなるコミュニティ」";
+    hc.innerHTML = msg.replace("コミュニティ", "<br>コミュニティ");
+  }
+
+  const hsh = document.getElementById("heroSubhead");
+  if(hsh) hsh.textContent = hp.サブ見出し || "";
+
+  const hs = document.getElementById("heroSub");
+  if(hs) hs.textContent = c.基本情報.サブコピー || "";
+
+  const sh = document.getElementById("serviceHeading");
+  if(sh) sh.textContent = hp.サービス見出し || "";
+
+  const sc = document.getElementById("serviceCopy");
+  if(sc) sc.textContent = hp.サービス説明 || "";
+
 
   // Strengths
   const grid = document.getElementById("strengthGrid");

@@ -17,7 +17,7 @@ nav{position:sticky;top:0;z-index:20;background:rgba(13,15,18,.9);backdrop-filte
 section{padding:48px 0 80px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 28px}
 .chip{border:1px solid #3a414a;border-radius:999px;padding:9px 14px;color:#d9dee5}.chip.active{background:#fff;color:#111;border-color:#fff}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:var(--panel);border:1px solid #292f37;border-radius:22px;overflow:hidden}
-.visual{height:210px;background:linear-gradient(145deg,#262d36,#121519);display:grid;place-items:center;font-size:68px}
+.visual{height:210px;background:linear-gradient(145deg,#262d36,#121519);display:grid;place-items:center;font-size:68px;overflow:hidden}.visual img{width:100%;height:100%;object-fit:contain;background:#fff}.stock{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:999px;background:#20252c;color:#d9dee5;font-size:12px}
 .info{padding:22px}.brand{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:.1em}.product h3{margin:7px 0 5px}.meta{color:var(--muted);font-size:14px;min-height:48px}
 .price{font-weight:900;font-size:26px;margin:14px 0}.coming{color:#8f98a4}.note{background:#181c21;border-left:4px solid var(--accent);padding:18px;border-radius:14px;color:#d9dee5}
 @media(max-width:800px){.grid{grid-template-columns:1fr}.hero{padding-top:52px}}
@@ -37,14 +37,42 @@ section{padding:48px 0 80px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin
 
 <div class="note"><b>ラバー貼り・交換にも対応。</b><br>ご購入いただいたラバーの貼付けや、今お使いのラバー交換もご相談ください。<br><br><b>このページは販売ページのデザイン試作版です。</b><br>正式な取扱ブランド・商品名・価格・在庫が決まり次第、そのまま商品を追加できます。オンライン決済を入れず「取り置き・店頭購入」にすれば、月額0円のまま運用できます。</div>
 
-<div class="grid" style="margin-top:24px">
- <article class="product"><div class="visual">🟥</div><div class="info"><div class="brand">ラバー</div><h3>おすすめ裏ソフト</h3><div class="meta">回転・スピード・コントロールのバランスを見ながら提案。</div><div class="price coming">商品登録予定</div><a class="btn" href="mailto:">店頭で相談</a></div></article>
- <article class="product"><div class="visual">🟫</div><div class="info"><div class="brand">ラバー</div><h3>表ソフト・粒高</h3><div class="meta">戦型や相手との相性を考えながら選べます。</div><div class="price coming">商品登録予定</div><a class="btn" href="mailto:">店頭で相談</a></div></article>
- <article class="product"><div class="visual">🏓</div><div class="info"><div class="brand">ラケット</div><h3>シェークラケット</h3><div class="meta">初級者から競技者まで、打球感や重量を相談。</div><div class="price coming">商品登録予定</div><a class="btn" href="mailto:">店頭で相談</a></div></article>
- <article class="product"><div class="visual">🏓</div><div class="info"><div class="brand">ラケット</div><h3>ペンホルダー</h3><div class="meta">中国式・日本式など、プレースタイルに合わせて提案。</div><div class="price coming">商品登録予定</div><a class="btn" href="mailto:">店頭で相談</a></div></article>
- <article class="product"><div class="visual">🎁</div><div class="info"><div class="brand">セット</div><h3>初心者セット</h3><div class="meta">最初の1本を失敗しにくい組み合わせで。</div><div class="price coming">商品登録予定</div><a class="btn" href="mailto:">店頭で相談</a></div></article>
- <article class="product"><div class="visual">💬</div><div class="info"><div class="brand">用具相談</div><h3>用具相談</h3><div class="meta">「今のラバーが合わない」「もっと回転をかけたい」なども相談可能。</div><div class="price">相談無料</div><a class="btn" href="index.html#access">問い合わせ</a></div></article>
-</div>
+<div class="grid" style="margin-top:24px" id="productGrid"></div>
 </div></section>
+
+<script>
+function productVisual(p){
+  if(p.画像){
+    return `<img src="${p.画像}" alt="${p.商品名}" loading="lazy">`;
+  }
+  return p.カテゴリ === "ラケット" ? "🏓" : "🟥";
+}
+function renderProducts(){
+  const root = document.getElementById("productGrid");
+  const items = (GAO_CONTENT.商品 || []).filter(p => p.表示 !== false);
+  if(!items.length){
+    root.innerHTML = `<div class="product"><div class="info"><h3>商品準備中</h3><div class="meta">取扱商品は順次追加予定です。</div></div></div>`;
+    return;
+  }
+  root.innerHTML = items.map(p => `
+    <article class="product">
+      <div class="visual">${productVisual(p)}</div>
+      <div class="info">
+        <div class="brand">${p.ブランド || p.カテゴリ}</div>
+        <h3>${p.商品名}</h3>
+        <div class="meta">${p.説明 || ""}</div>
+        <div class="price">${p.価格}</div>
+        <div class="stock">${p.在庫 || ""}</div>
+        <div style="margin-top:16px"><a class="btn consult" href="#">LINEで相談・取り置き</a></div>
+      </div>
+    </article>
+  `).join("");
+  root.querySelectorAll(".consult").forEach(a=>{
+    a.onclick=(e)=>{e.preventDefault();window.open(GAO_CONTENT.SNS.LINEリンク,"_blank","noopener")};
+  });
+}
+renderProducts();
+</script>
+
 </body>
 </html>
