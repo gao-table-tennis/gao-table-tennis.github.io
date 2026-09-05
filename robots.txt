@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gao-table-tennis.github.io/sitemap.xml

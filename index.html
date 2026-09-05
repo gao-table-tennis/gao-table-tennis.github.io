@@ -3,8 +3,69 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GAO卓球場｜成瀬駅徒歩3分・24時間営業</title>
-<meta name="description" content="JR横浜線 成瀬駅徒歩3分。初心者から競技者まで楽しめるGAO卓球場。台貸し・個人レッスンをオンライン予約。">
+<title>GAO卓球場｜町田・成瀬の卓球教室・卓球スクール｜成瀬駅徒歩3分</title>
+<meta name="description" content="東京都町田市・JR成瀬駅徒歩3分のGAO卓球場。ジュニア・初心者教室、個人・グループレッスン、台貸し、卓球用品に対応。日本語・中国語・英語でレッスン可能。年中無休・24時間営業。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="https://gao-table-tennis.github.io/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="GAO卓球場">
+<meta property="og:title" content="GAO卓球場｜町田・成瀬の卓球教室・卓球スクール">
+<meta property="og:description" content="成瀬駅徒歩3分。ジュニア・初心者教室、個人・グループレッスン、台貸し、卓球用品に対応する町田の卓球場です。">
+<meta property="og:url" content="https://gao-table-tennis.github.io/">
+<meta name="twitter:card" content="summary">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://gao-table-tennis.github.io/#website",
+      "url": "https://gao-table-tennis.github.io/",
+      "name": "GAO卓球場",
+      "alternateName": ["GAO TABLE TENNIS", "GAO Table Tennis"]
+    },
+    {
+      "@type": "SportsActivityLocation",
+      "@id": "https://gao-table-tennis.github.io/#business",
+      "name": "GAO卓球場",
+      "alternateName": "GAO TABLE TENNIS",
+      "url": "https://gao-table-tennis.github.io/",
+      "telephone": "+81-70-2178-6868",
+      "description": "東京都町田市・JR成瀬駅徒歩3分の卓球場・卓球教室。ジュニア・初心者教室、個人・グループレッスン、台貸し、卓球用品に対応。",
+      "address": {
+        "@type": "PostalAddress",
+        "postalCode": "194-0045",
+        "addressRegion": "東京都",
+        "addressLocality": "町田市",
+        "streetAddress": "南成瀬1丁目8-12 中山ビル3階301",
+        "addressCountry": "JP"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/gaopingpang/"
+      ]
+    }
+  ]
+}
+</script>
 <style>
 :root{
   --bg:#0d0f12; --panel:#15181d; --soft:#20252c; --text:#f6f7f8; --muted:#aeb6c0;
@@ -88,7 +149,16 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
 .modal{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:60;display:none;align-items:center;justify-content:center;padding:18px}
 .modal.show{display:flex}
 .modalbox{width:min(720px,100%);max-height:92vh;overflow:auto}
+.booking-modal-panel{background:#fff;color:#151515;border-radius:26px;padding:30px;box-shadow:0 30px 90px rgba(0,0,0,.45)}
+.booking-modal-panel h3{font-size:28px;margin:0 0 8px}
+.booking-modal-panel p{color:#626a73;margin:0 0 22px}
+.booking-modal-options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.booking-modal-option{border:1px solid #d9dde2;border-radius:18px;padding:20px;background:#fff;color:#151515;cursor:pointer;text-align:left}
+.booking-modal-option:hover{background:#f5f6f7}
+.booking-modal-option b{display:block;font-size:18px;margin-bottom:4px}
+.booking-modal-option span{font-size:13px;color:#68717b}
 .close{float:right;border:0;background:#eee;border-radius:50%;width:34px;height:34px;cursor:pointer}
+@media(max-width:600px){.booking-modal-options{grid-template-columns:1fr}}
 .status{margin-top:14px;border-radius:12px;padding:12px;display:none}
 .status.ok{display:block;background:#e8f8e4}
 .status.err{display:block;background:#ffe9e9}
@@ -122,7 +192,7 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
  <div class="wrap hero-grid">
   <div>
    <div style="font-size:clamp(18px,2.6vw,30px);font-weight:900;letter-spacing:.02em;color:#f1d45d;margin-bottom:16px">
-     <span id="brandTop">卓球スクール × 練習コミュニティ</span>
+     <span id="brandTop">GAO卓球場｜町田・成瀬の卓球スクール × 練習コミュニティ</span>
    </div>
    <h1 id="heroCatch">「卓球が上手くなる<br>コミュニティ」</h1>
    <p id="heroSubhead" style="font-size:22px;font-weight:800;color:#fff;margin-bottom:8px">学ぶ場所も、練習する仲間も、ここにある。</p>
@@ -346,8 +416,27 @@ footer{border-top:1px solid #292e35;padding:34px 0 90px;color:#929aa5;font-size:
 </section>
 </main>
 
-<footer><div class="wrap">© GAO TABLE TENNIS · 試作版 v3</div></footer>
+<footer><div class="wrap">© GAO TABLE TENNIS · 公式サイト</div></footer>
 
+
+
+<div class="modal" id="bookingModal" aria-hidden="true">
+  <div class="modalbox booking-modal-panel" role="dialog" aria-modal="true" aria-labelledby="bookingModalTitle">
+    <button class="close" type="button" id="closeBookingModal" aria-label="閉じる">×</button>
+    <h3 id="bookingModalTitle">ご予約・お問い合わせ</h3>
+    <p>ご希望の内容を選ぶと、GAO卓球場のLINE公式アカウントが開きます。</p>
+    <div class="booking-modal-options">
+      <button class="booking-modal-option" type="button" data-booking-line="table">
+        <b>🏓 台貸しを予約</b>
+        <span>練習・自主練習の卓球台予約</span>
+      </button>
+      <button class="booking-modal-option" type="button" data-booking-line="lesson">
+        <b>🎯 体験・レッスンを予約</b>
+        <span>体験、個人、グループ、ジュニア・初心者教室</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <script src="content.js"></script>
 <script>
@@ -467,6 +556,48 @@ function openLineOfficial(){
   window.open(LINE_OFFICIAL_URL, "_blank", "noopener");
 }
 
+// Header "予約する" button
+const bookingModal = document.getElementById("bookingModal");
+const closeBookingModal = document.getElementById("closeBookingModal");
+
+function openBookingModal(){
+  if(!bookingModal) return;
+  bookingModal.classList.add("show");
+  bookingModal.setAttribute("aria-hidden", "false");
+}
+
+function hideBookingModal(){
+  if(!bookingModal) return;
+  bookingModal.classList.remove("show");
+  bookingModal.setAttribute("aria-hidden", "true");
+}
+
+document.querySelectorAll("[data-open-booking]").forEach(el=>{
+  el.addEventListener("click", e=>{
+    e.preventDefault();
+    openBookingModal();
+  });
+});
+
+if(closeBookingModal) closeBookingModal.addEventListener("click", hideBookingModal);
+
+if(bookingModal){
+  bookingModal.addEventListener("click", e=>{
+    if(e.target === bookingModal) hideBookingModal();
+  });
+}
+
+document.addEventListener("keydown", e=>{
+  if(e.key === "Escape") hideBookingModal();
+});
+
+document.querySelectorAll("[data-booking-line]").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    hideBookingModal();
+    openLineOfficial();
+  });
+});
+
 document.querySelectorAll(".line-link").forEach(el=>{
   el.addEventListener("click", e=>{
     e.preventDefault();
@@ -480,7 +611,7 @@ function renderContent(){
   // Editable homepage copy from content.js
   const hp = c.首页文案 || {};
   const brandTop = document.getElementById("brandTop");
-  if(brandTop) brandTop.textContent = hp.ブランド上段 || "卓球スクール × 練習コミュニティ";
+  if(brandTop) brandTop.textContent = "GAO卓球場｜町田・成瀬の" + (hp.ブランド上段 || "卓球スクール × 練習コミュニティ");
 
   const hc = document.getElementById("heroCatch");
   if(hc){
